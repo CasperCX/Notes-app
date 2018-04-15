@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
 import firebase from 'firebase';
+import config from '../config';
 import ReduxThunk from 'redux-thunk';
 import RouterComponent from './Router';
 import rootReducer from './reducers';
@@ -14,12 +15,12 @@ class App extends Component {
   
   componentWillMount()  {
       firebase.initializeApp({
-        apiKey: "AIzaSyB39Il_dfeEwULqVHVFYNq2yd-Xy5ApQ40",
-        authDomain: "notes-app-a7ba0.firebaseapp.com",
-        databaseURL: "https://notes-app-a7ba0.firebaseio.com",
-        projectId: "notes-app-a7ba0",
-        storageBucket: "notes-app-a7ba0.appspot.com",
-        messagingSenderId: "470044865184"
+        apiKey: config.apiKey,
+        authDomain: config.authDomain,
+        databaseURL: config.databaseURL,
+        projectId: config.projectId,
+        storageBucket: config.storageBucket,
+        messagingSenderId: config.messagingSenderId
     });
 
     firebase.auth().onAuthStateChanged((user) => {
